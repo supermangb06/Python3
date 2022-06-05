@@ -1,0 +1,466 @@
+float_1 = 0.25
+float_2 = 40.0
+product = float_1 * float_2
+big_string = "The product was " + str(product)
+___________________________________________________________________________________
+skill_completed = "Python Syntax"
+exercises_completed = 13
+#The amount of points for each exercise may change, because points don't exist yet
+points_per_exercise = 5
+point_total = 100 + (exercises_completed * points_per_exercise)
+print "I got " + str(point_total) + " points!"
+___________________________________________________________________________________
+# this is the tip calculator
+meal = 44.50
+tax = 6.75/100
+tip = 15./100
+meal = meal + meal * tax
+total = meal + meal * tip
+print total
+___________________________________________________________________________________
+name = raw_input("What is your name? ")
+quest = raw_input("What is your quest? ")
+color = raw_input("What is your favorite color? ")
+
+print "Ah, so your name is %s, your quest is %s, " \
+"and your favorite color is %s." % (name, quest, color)
+___________________________________________________________________________________
+my_string = raw_input("Insert String: ")
+print len(my_string)
+print my_string.upper()
+___________________________________________________________________________________
+from datetime import datetime
+now = datetime.now()
+
+print '%02d/%02d/%4d %02d:%02d:%02d' % (now.month, now.day, now.year, now.hour, now.minute, now.second)
+___________________________________________________________________________________
+"""
+This program generates passages that are generated in mad-lib format
+Author: Noel 
+"""
+
+# The template for the story
+
+STORY = "This morning %s woke up feeling %s. 'It is going to be a %s day!' Outside, a bunch of %ss were protesting to keep %s in stores. They began to %s to the rhythm of the %s, which made all the %ss very %s. Concerned, %s texted %s, who flew %s to %s and dropped %s in a puddle of frozen %s. %s woke up in the year %s, in a world where %ss ruled the world."
+
+print "Mad Libs has started"
+name = raw_input("Enter a name: ")
+adjective1 = raw_input("Please give the first adjective: ")
+adjective2 = raw_input("Please give the second adjective: ")
+adjective3 = raw_input("Please give the third adjective: ")
+verb = raw_input("Please give the a verb: ")
+noun1 = raw_input("Please give the first noun: ")
+noun2 = raw_input("Please give the second noun: ")
+animal = raw_input("Please give one animal: ")
+food = raw_input("Please give one food: ")
+fruit = raw_input("Please give one fruit: ")
+superhero = raw_input("Please give one superhero: ")
+country = raw_input("Please give one country: ")
+dessert = raw_input("Please give one dessert: ")
+year = raw_input("Please give a timeframe in year format. Ex 1989: ")
+
+print STORY % (name, adjective1, adjective2, animal, food, verb, noun1, fruit, adjective3, name, superhero, name, country, name, dessert, name, year, noun2)
+___________________________________________________________________________________
+
+# Grade Converter using If statements
+def grade_converter(grade):
+    if grade >= 90:
+        return "A"
+    elif grade >= 80:
+        return "B"
+    elif grade >= 70:
+        return "C"
+    elif grade >= 65:
+        return "D"
+    else:
+        return "F"
+      
+# This should print an "A"      
+print grade_converter(92)
+
+# This should print a "C"
+print grade_converter(70)
+
+# This should print an "F"
+print grade_converter(61)
+___________________________________________________________________________________
+
+#This is a Pig latin Translator
+pyg = 'ay'
+
+original = raw_input('Enter a word:')
+
+if len(original) > 0 and original.isalpha():
+  word = original.lower()
+  first = word[0]
+  new_word = word[1:] + first + pyg
+  print new_word
+else:
+  print 'empty'
+___________________________________________________________________________________
+
+  """This program is a calculator that can compute the area of the following shapes: Circle and Triangle"""
+print "The Program is running"
+name = raw_input("What is your name? ")
+option = raw_input("Enter C for Circle or T for triangle: ")
+option = option.lower()
+if option == 'c':
+  radius = float(raw_input("What is the radius? "))
+  area = 3.14159 * (radius**2)
+  print area
+elif option == 't':
+  base = float(raw_input("What is the base of the triangle? "))
+  height = float(raw_input("What is the height of the triangle? "))
+  area = 0.5 * base * height
+  print area
+else:
+  print "Invalid shape"
+print "Program is exiting %s" % name
+___________________________________________________________________________________
+#This calculates trip cost with city, days, and spending money arguments
+def hotel_cost(nights):
+  return 140 * nights
+
+def plane_ride_cost(city):
+  city = city.lower()
+  if city == "charlotte":
+    return 183
+  elif city == "tampa":
+    return 220
+  elif city == "pittsburgh":
+    return 222
+  elif city == "los angeles":
+    return 475
+  else:
+    return "Error city not found"
+  
+def rental_car_cost(days):
+    if days >= 7:
+      return (days * 40) - 50
+    elif days >=3:
+      return (days * 40) - 20
+    else:
+      return days * 40
+def trip_cost(city, days, spending_money):
+  return plane_ride_cost(city) + hotel_cost(days - 1) + rental_car_cost(days) + spending_money
+print trip_cost("Los Angeles", 5, 600)
+___________________________________________________________________________________
+"""program that rolls a pair of dice and asks the user to guess the sum. If the users guess is equal to the total value of the dice roll, the user wins! Otherwise, the computer wins."""
+from random import randint
+from time import sleep
+
+def get_user_guess():
+  guess = int(raw_input("Please enter a number > 1: "))
+  return guess
+
+def roll_dice(number_of_sides):
+  first_roll = randint(1, number_of_sides)
+  second_roll = randint(1, number_of_sides)
+  max_val = number_of_sides * 2
+  print "The maximum possible value is %d" % max_val
+  guess = get_user_guess()
+  if guess > max_val:
+    print "Guess not allowed"
+  else:
+    print "Rolling..."
+    sleep(2)
+    print "The first die is %d" % first_roll
+    sleep(1)
+    print "The second die is %d" % second_roll
+    sleep(1)
+    total_roll = first_roll + second_roll
+    print "Result..."
+    sleep(1)
+    if total_roll == guess:
+      print "You won!"
+    else:
+      print "You lost..."
+      
+roll_dice(6)
+___________________________________________________________________________________   
+#This code goes over lists and dictionaries
+inventory = {
+  'gold' : 500,
+  'pouch' : ['flint', 'twine', 'gemstone'], # Assigned a new list to 'pouch' key
+  'backpack' : ['xylophone','dagger', 'bedroll','bread loaf']
+}
+
+# Adding a key 'burlap bag' and assigning a list to it
+inventory['burlap bag'] = ['apple', 'small ruby', 'three-toed sloth']
+
+# Sorting the list found under the key 'pouch'
+inventory['pouch'].sort() 
+
+# Your code here
+inventory['pocket'] = ('seashell', 'strange berry', 'lint')
+inventory['backpack'].sort()
+inventory['backpack'].remove('dagger')
+inventory['gold'] += 50
+___________________________________________________________________________________
+#This program takes prints out the total $ if all stock is sold
+prices = {
+  "banana" : 4,
+  "apple"  : 2,
+  "orange" : 1.5,
+  "pear"   : 3,
+}
+stock = {
+  "banana" : 6,
+  "apple"  : 0,
+  "orange" : 32,
+  "pear"   : 15,
+}
+
+for key in prices:
+  total = total + (prices[key]*stock[key])
+  print key
+  print "price: %s" % prices[key]
+  print "stock: %s" % stock[key]
+print total
+___________________________________________________________________________________
+#This calculates the price of your shopping list according to available stock
+shopping_list = ["banana", "orange", "apple"]
+
+stock = {
+  "banana": 6,
+  "apple": 0,
+  "orange": 32,
+  "pear": 15
+}
+    
+prices = {
+  "banana": 4,
+  "apple": 2,
+  "orange": 1.5,
+  "pear": 3
+}
+
+def compute_bill(food):
+  total = 0
+  for x in food:
+    if stock[x] > 0:
+    	total += prices[x]
+      	stock[x] -= 1
+  return total
+
+print compute_bill(shopping_list)
+___________________________________________________________________________________
+"""This Program simulates the game rock, paper, scissors"""
+from random import randint
+options = ["ROCK", "PAPER", "SCISSORS"]
+message = {
+  "tie": "Yawn it's a tie!",
+  "won": "Yay you won!",
+  "lost": "Aww you lost!"
+}
+def decide_winner(user_choice, computer_choice):
+  print "You picked %s" % user_choice
+  print "Your opponent picked %s" %computer_choice
+  if user_choice == computer_choice:
+    print message["tie"]
+  elif user_choice == options[0] and computer_choice == options[2]:
+    print message["won"]
+  elif user_choice == options[1] and computer_choice == options[0]:
+    print message["won"] 
+  elif user_choice == options[2] and computer_choice == options[1]:
+    print message["won"]
+  else:
+    print message["lost"]
+                  
+def play_RPS():
+  print "Rock, Paper, or Scissors?"
+  user_choice = raw_input("Enter Rock, Paper, or Scissors: ")
+  user_choice = user_choice.upper()
+  computer_choice = options[randint(0, 2)]
+  decide_winner(user_choice, computer_choice)
+  
+play_RPS() 
+___________________________________________________________________________________
+#This program takes grade averages and assigns letter grade to the score
+lloyd = {
+  "name": "Lloyd",
+  "homework": [90.0, 97.0, 75.0, 92.0],
+  "quizzes": [88.0, 40.0, 94.0],
+  "tests": [75.0, 90.0]
+}
+alice = {
+  "name": "Alice",
+  "homework": [100.0, 92.0, 98.0, 100.0],
+  "quizzes": [82.0, 83.0, 91.0],
+  "tests": [89.0, 97.0]
+}
+tyler = {
+  "name": "Tyler",
+  "homework": [0.0, 87.0, 75.0, 22.0],
+  "quizzes": [0.0, 75.0, 78.0],
+  "tests": [100.0, 100.0]
+}
+
+# Add your function below!
+def average(numbers):
+  total = 0
+  total = float(sum(numbers))/len(numbers)
+  return total
+
+def get_average(student):
+  homework = 0.1 * average(student["homework"])
+  quizzes = 0.3 * average(student["quizzes"])
+  tests = 0.6 * average(student["tests"])
+  return homework + quizzes + tests
+
+def get_letter_grade(score):
+  if score >= 90:
+    return "A"
+  elif score >= 80:
+    return "B"
+  elif score >= 70:
+    return "C"
+  elif score >= 60:
+    return "D"
+  else:
+    return "F"
+  
+def get_class_average(class_list):
+  results = []
+  for student in class_list:
+    results.append(get_average(student))
+  return average(results)
+
+students = [alice, lloyd, tyler]
+print get_class_average(students)
+print get_letter_grade(get_class_average(students))
+___________________________________________________________________________________
+n = [1, 3, 5]
+# Remove the first item in the list here
+#will remove the item at index from the list and return it to you
+#n.pop(1)
+#will remove the actual item if it finds it
+#n.remove(1)
+#del(n[0]) is like .pop in that it will remove the item at the given index, but it won’t return it
+del(n[0])
+print n
+___________________________________________________________________________________
+#This program is a battleship game with 4 tries
+from random import randint
+
+board = []
+
+for x in range(5):
+  board.append(["O"] * 5)
+
+def print_board(board):
+  for row in board:
+    print " ".join(row)
+
+print_board(board)
+
+def random_row(board):
+  return randint(0, len(board) - 1)
+
+def random_col(board):
+  return randint(0, len(board[0]) - 1)
+
+ship_row = random_row(board)
+ship_col = random_col(board)
+#print ship_row
+#print ship_col
+
+for turn in range(3):
+  print "Turn",  turn+1
+  guess_row = int(raw_input("Guess Row: "))
+  guess_col = int(raw_input("Guess Col: "))
+
+  if guess_row == ship_row and guess_col == ship_col:
+    print "Congratulations! You sunk my battleship!"
+    break
+  else:
+    if guess_row not in range(5) or guess_col not in range(5):
+      print "Oops, that's not even in the ocean."
+    elif(board[guess_row][guess_col] == "X"):
+      print "You guessed that one already."
+    else:
+      print "You missed my battleship!"
+      board[guess_row][guess_col] = "X"
+    if turn == 3:
+    	print "Game Over"
+    print_board(board)
+___________________________________________________________________________________
+#This program takes individual numbers of the complete number and adds them
+def digit_sum(n):
+  results = 0
+  n = str(n)
+  for x in n:
+    x = int(x)
+    results = results + x
+  return results
+___________________________________________________________________________________
+#This program does factorial calculations
+def factorial(x):
+    results = 1
+    while x > 0:
+        results *= x
+        x -= 1
+    return results
+___________________________________________________________________________________
+#This program checks if a number is a prime number
+def is_prime(x):
+  if x < 2:
+    return False
+  else:
+    for n in range(2, x):
+      if x % n == 0:
+        return False
+    return True
+___________________________________________________________________________________
+ #This program reverses words
+ 
+def reverse(text):
+  x = len(text) -1
+  results = ""
+  for y in text:
+    results += text [x]
+    x -= 1
+  print results  
+  return results
+___________________________________________________________________________________
+This program removes vowels with the exception of y
+def anti_vowel(text):
+    result = ""
+    vowels = "aeiouAEIOU"
+    for x in text:
+          if x not in vowels:
+            result += x
+    return result
+print anti_vowel("hello book")
+___________________________________________________________________________________
+This program scores single word scrabble scores  
+score = {"a": 1, "c": 3, "b": 3, "e": 1, "d": 2, "g": 2, 
+         "f": 4, "i": 1, "h": 4, "k": 5, "j": 8, "m": 3, 
+         "l": 1, "o": 1, "n": 1, "q": 10, "p": 3, "s": 1, 
+         "r": 1, "u": 1, "t": 1, "w": 4, "v": 4, "y": 4, 
+         "x": 8, "z": 10}
+
+def scrabble_score(word):
+  total = 0
+  word = word.lower()
+  for x in word:
+    if x in score:
+      total += score[x]
+  return total
+  ___________________________________________________________________________________
+#This program censors certain words in a sentence
+def censor(text, word):
+  results = ""
+  censored_word = "*" * len(word)
+  words = text.split()
+  y = 0
+  for x in words:
+    if x == word:
+      words[y] = censored_word
+    y += 1
+  results = " ".join(words)
+  return results
+#print censor("hey hey hey", "hey")  	
+    
+  
+      
